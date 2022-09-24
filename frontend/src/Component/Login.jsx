@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -6,6 +6,14 @@ const Login = () => {
     const[email,setEmail]=useState("");
     const[password,setPassword]=useState("");
    const nav=useNavigate();
+
+   useEffect(() => {
+    let auth=JSON.parse(localStorage.getItem('user'));   
+    if(auth){
+      nav('/');
+    }
+    
+  }, [])
 
     const handleLogin=async()=>{
       let payload={email,password};
@@ -25,6 +33,9 @@ const Login = () => {
         alert("Please enter a valid details");
       }
     }
+
+   
+    
   return (
     <div className='login'>
           <h1>Login</h1>

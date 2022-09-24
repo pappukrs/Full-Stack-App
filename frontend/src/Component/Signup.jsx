@@ -19,12 +19,12 @@ const Signup = () => {
     })
     result=await result.json()
     localStorage.setItem('user',JSON.stringify(result));
-    nav('/');
+    nav('/login');
    }
 useEffect(() => {
     let auth=JSON.parse(localStorage.getItem('user'));
     if(auth){
-        nav('/')
+        nav('/login')
     }
 }, []);
 
